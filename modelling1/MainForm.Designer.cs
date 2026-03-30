@@ -58,6 +58,7 @@ namespace modelling1
             LbXin = new Label();
             TimeX10 = new Button();
             TimeX1 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)ObjectPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FirstTank).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SecondTank).BeginInit();
@@ -267,11 +268,22 @@ namespace modelling1
             TimeX1.UseVisualStyleBackColor = true;
             TimeX1.Click += TimeX1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(998, 126);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 20;
+            label1.Text = "label1";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1215, 830);
+            BackColor = Color.Beige;
+            ClientSize = new Size(1215, 576);
+            Controls.Add(label1);
             Controls.Add(TimeX1);
             Controls.Add(TimeX10);
             Controls.Add(LbXin);
@@ -291,6 +303,7 @@ namespace modelling1
             Controls.Add(ObjectPicture);
             Controls.Add(StopButton);
             Controls.Add(StartButton);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "MainForm";
             Text = "Form1";
             Load += MainForm_Load;
@@ -299,17 +312,6 @@ namespace modelling1
             ((System.ComponentModel.ISupportInitialize)SecondTank).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
-            
-            FirstTank.ChartAreas[0].AxisX.Title = "Час, с";
-            FirstTank.ChartAreas[0].AxisY.Title = "Рівень ємності 1, м";
-            SecondTank.ChartAreas[0].AxisX.Title = "Час, с";
-            SecondTank.ChartAreas[0].AxisY.Title = "Рівень ємності 2, м";
-
-            FirstTank.Series[0].ChartType = SeriesChartType.Spline;
-            SecondTank.Series[0].ChartType = SeriesChartType.Spline;
-            
-
 
 
         }
@@ -336,5 +338,6 @@ namespace modelling1
         private Label LbXin;
         private Button TimeX10;
         private Button TimeX1;
+        private Label label1;
     }
 }
