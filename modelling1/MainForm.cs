@@ -17,6 +17,9 @@ namespace modelling1
         //private LimitBlock XLimit = new LimitBlock(0, 100);
 
         private ControlObject Tanks = new ControlObject(0,5, 0,5, 2, 1);
+        private PIDBlock Regulator1 = new PIDBlock(2, 0.3, 2, 1);
+        private PIDBlock Regulator2 = new PIDBlock(2, 0.3, 2, 1);
+        private ControlSystem controlSystem;
         
 
 
@@ -42,7 +45,8 @@ namespace modelling1
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            controlSystem = new ControlSystem(Regulator1, Regulator2,Tanks, 1);
+            controlSystem.Setpoint1 = 3;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -72,8 +76,9 @@ namespace modelling1
             Level2 = (G12 * X12 / 100) - (Gout1 * Xout1 / 100);
             */
 
-            (double Y1, double Y2) = Tanks.Calc();
+            //(double Y1, double Y2) = Tanks.Calc();
             //Tanks.Z11 = 2;
+            (double Y1, double Y2) = controlSystem.Calc();
             label1.Text = $"Level1={Y1}";
 
             Time += dt;
@@ -85,58 +90,58 @@ namespace modelling1
 
         private void XinDOWN_Click(object sender, EventArgs e)
         {
-            Tanks.Xin -= 1;
+            controlSystem.Xin -= 1;
             
-            LbXin.Text = $"{Tanks.Xin}";
+            LbXin.Text = $"{controlSystem.Xin}";
         }
 
         private void XinUP_Click(object sender, EventArgs e)
         {
-            Tanks.Xin += 1;
+            controlSystem.Xin += 1;
             
-            LbXin.Text = $"{Tanks.Xin}";
+            LbXin.Text = $"{controlSystem.Xin}";
         }
 
         private void Xout2DOWN_Click(object sender, EventArgs e)
         {
-            Tanks.Xout2 -= 1;
+            controlSystem.Xout2 -= 1;
             
-            LbXout2.Text = $"{Tanks.Xout2}";
+            LbXout2.Text = $"{controlSystem.Xout2}";
         }
 
         private void X2outUP_Click(object sender, EventArgs e)
         {
-            Tanks.Xout2 += 1;
+            controlSystem.Xout2 += 1;
             
-            LbXout2.Text = $"{Tanks.Xout2}";
+            LbXout2.Text = $"{controlSystem.Xout2}";
         }
 
         private void X12DOWN_Click(object sender, EventArgs e)
         {
-            Tanks.X12 -= 1;
+            controlSystem.X12 -= 1;
           
-            LbX12.Text = $"{Tanks.X12}";
+            LbX12.Text = $"{controlSystem.X12}";
         }
 
         private void X12UP_Click(object sender, EventArgs e)
         {
-            Tanks.X12 += 1;
+            controlSystem.X12 += 1;
             
-            LbX12.Text = $"{Tanks.X12}";
+            LbX12.Text = $"{controlSystem.X12}";
         }
 
         private void Xout1DOWN_Click(object sender, EventArgs e)
         {
-            Tanks.Xout1 -= 1;
+            controlSystem.Xout1 -= 1;
             
-            LbXout1.Text = $"{Tanks.Xout1}";
+            LbXout1.Text = $"{controlSystem.Xout1}";
         }
 
         private void Xout1UP_Click(object sender, EventArgs e)
         {
-            Tanks.Xout1 += 1;
+            controlSystem.Xout1 += 1;
             
-            LbXout1.Text = $"{Tanks.Xout1}";
+            LbXout1.Text = $"{controlSystem.Xout1}";
         }
 
         private void TimeX10_Click(object sender, EventArgs e)
