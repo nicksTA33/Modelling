@@ -59,6 +59,30 @@ namespace modelling1
             TimeX10 = new Button();
             TimeX1 = new Button();
             label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            SetpointFirst = new TextBox();
+            SetpointSecond = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
+            KpFirst = new TextBox();
+            TiFirst = new TextBox();
+            TdFirst = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            TdSecond = new TextBox();
+            TiSecond = new TextBox();
+            KpSecond = new TextBox();
+            ChangeMode1 = new Button();
+            ChangeMode2 = new Button();
+            FirstLess = new Button();
+            FirstMore = new Button();
+            SecondLess = new Button();
+            SecondMore = new Button();
             ((System.ComponentModel.ISupportInitialize)ObjectPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FirstTank).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SecondTank).BeginInit();
@@ -271,11 +295,225 @@ namespace modelling1
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(998, 126);
+            label1.Location = new Point(608, 9);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 20;
             label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(850, 45);
+            label2.Name = "label2";
+            label2.Size = new Size(121, 15);
+            label2.TabIndex = 21;
+            label2.Text = "Setpoint for first tank:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(850, 76);
+            label3.Name = "label3";
+            label3.Size = new Size(139, 15);
+            label3.TabIndex = 22;
+            label3.Text = "Setpoint for second tank:";
+            // 
+            // SetpointFirst
+            // 
+            SetpointFirst.Location = new Point(998, 38);
+            SetpointFirst.Name = "SetpointFirst";
+            SetpointFirst.Size = new Size(100, 23);
+            SetpointFirst.TabIndex = 23;
+            SetpointFirst.TextChanged += SetpointFirst_TextChanged;
+            // 
+            // SetpointSecond
+            // 
+            SetpointSecond.Location = new Point(998, 73);
+            SetpointSecond.Name = "SetpointSecond";
+            SetpointSecond.Size = new Size(100, 23);
+            SetpointSecond.TabIndex = 24;
+            SetpointSecond.TextChanged += SetpointSecond_TextChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(850, 130);
+            label4.Name = "label4";
+            label4.Size = new Size(145, 15);
+            label4.TabIndex = 25;
+            label4.Text = "First regulator parameters:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(1053, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(162, 15);
+            label5.TabIndex = 26;
+            label5.Text = "Second regulator parameters:";
+            // 
+            // KpFirst
+            // 
+            KpFirst.Location = new Point(889, 158);
+            KpFirst.Name = "KpFirst";
+            KpFirst.Size = new Size(100, 23);
+            KpFirst.TabIndex = 27;
+            KpFirst.TextChanged += KpFirst_TextChanged;
+            // 
+            // TiFirst
+            // 
+            TiFirst.Location = new Point(889, 187);
+            TiFirst.Name = "TiFirst";
+            TiFirst.Size = new Size(100, 23);
+            TiFirst.TabIndex = 28;
+            TiFirst.TextChanged += TiFirst_TextChanged;
+            // 
+            // TdFirst
+            // 
+            TdFirst.Location = new Point(889, 216);
+            TdFirst.Name = "TdFirst";
+            TdFirst.Size = new Size(100, 23);
+            TdFirst.TabIndex = 29;
+            TdFirst.TextChanged += TdFirst_TextChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(850, 161);
+            label6.Name = "label6";
+            label6.Size = new Size(21, 15);
+            label6.TabIndex = 30;
+            label6.Text = "Kp";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(850, 190);
+            label7.Name = "label7";
+            label7.Size = new Size(17, 15);
+            label7.TabIndex = 31;
+            label7.Text = "Ti";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(850, 219);
+            label8.Name = "label8";
+            label8.Size = new Size(20, 15);
+            label8.TabIndex = 32;
+            label8.Text = "Td";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(1059, 219);
+            label9.Name = "label9";
+            label9.Size = new Size(20, 15);
+            label9.TabIndex = 38;
+            label9.Text = "Td";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(1059, 190);
+            label10.Name = "label10";
+            label10.Size = new Size(17, 15);
+            label10.TabIndex = 37;
+            label10.Text = "Ti";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(1059, 161);
+            label11.Name = "label11";
+            label11.Size = new Size(21, 15);
+            label11.TabIndex = 36;
+            label11.Text = "Kp";
+            // 
+            // TdSecond
+            // 
+            TdSecond.Location = new Point(1098, 216);
+            TdSecond.Name = "TdSecond";
+            TdSecond.Size = new Size(100, 23);
+            TdSecond.TabIndex = 35;
+            TdSecond.TextChanged += TdSecond_TextChanged;
+            // 
+            // TiSecond
+            // 
+            TiSecond.Location = new Point(1098, 187);
+            TiSecond.Name = "TiSecond";
+            TiSecond.Size = new Size(100, 23);
+            TiSecond.TabIndex = 34;
+            TiSecond.TextChanged += TiSecond_TextChanged;
+            // 
+            // KpSecond
+            // 
+            KpSecond.Location = new Point(1098, 158);
+            KpSecond.Name = "KpSecond";
+            KpSecond.Size = new Size(100, 23);
+            KpSecond.TabIndex = 33;
+            KpSecond.TextChanged += KpSecond_TextChanged;
+            // 
+            // ChangeMode1
+            // 
+            ChangeMode1.Location = new Point(1123, 9);
+            ChangeMode1.Name = "ChangeMode1";
+            ChangeMode1.Size = new Size(75, 23);
+            ChangeMode1.TabIndex = 39;
+            ChangeMode1.Text = "Manual 1";
+            ChangeMode1.UseVisualStyleBackColor = true;
+            ChangeMode1.Click += ChangeMode1_Click;
+            // 
+            // ChangeMode2
+            // 
+            ChangeMode2.Location = new Point(1123, 68);
+            ChangeMode2.Name = "ChangeMode2";
+            ChangeMode2.Size = new Size(75, 23);
+            ChangeMode2.TabIndex = 40;
+            ChangeMode2.Text = "Manual 2";
+            ChangeMode2.UseVisualStyleBackColor = true;
+            ChangeMode2.Click += ChangeMode2_Click;
+            // 
+            // FirstLess
+            // 
+            FirstLess.Location = new Point(1124, 37);
+            FirstLess.Name = "FirstLess";
+            FirstLess.Size = new Size(24, 23);
+            FirstLess.TabIndex = 42;
+            FirstLess.Text = "<";
+            FirstLess.UseVisualStyleBackColor = true;
+            FirstLess.Click += FirstLess_Click;
+            // 
+            // FirstMore
+            // 
+            FirstMore.Location = new Point(1174, 37);
+            FirstMore.Name = "FirstMore";
+            FirstMore.Size = new Size(24, 23);
+            FirstMore.TabIndex = 41;
+            FirstMore.Text = ">";
+            FirstMore.UseVisualStyleBackColor = true;
+            FirstMore.Click += button2_Click;
+            // 
+            // SecondLess
+            // 
+            SecondLess.Location = new Point(1124, 97);
+            SecondLess.Name = "SecondLess";
+            SecondLess.Size = new Size(24, 23);
+            SecondLess.TabIndex = 44;
+            SecondLess.Text = "<";
+            SecondLess.UseVisualStyleBackColor = true;
+            SecondLess.Click += SecondLess_Click;
+            // 
+            // SecondMore
+            // 
+            SecondMore.Location = new Point(1174, 97);
+            SecondMore.Name = "SecondMore";
+            SecondMore.Size = new Size(24, 23);
+            SecondMore.TabIndex = 43;
+            SecondMore.Text = ">";
+            SecondMore.UseVisualStyleBackColor = true;
+            SecondMore.Click += SecondMore_Click;
             // 
             // MainForm
             // 
@@ -283,6 +521,30 @@ namespace modelling1
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Beige;
             ClientSize = new Size(1215, 576);
+            Controls.Add(SecondLess);
+            Controls.Add(SecondMore);
+            Controls.Add(FirstLess);
+            Controls.Add(FirstMore);
+            Controls.Add(ChangeMode2);
+            Controls.Add(ChangeMode1);
+            Controls.Add(label9);
+            Controls.Add(label10);
+            Controls.Add(label11);
+            Controls.Add(TdSecond);
+            Controls.Add(TiSecond);
+            Controls.Add(KpSecond);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(TdFirst);
+            Controls.Add(TiFirst);
+            Controls.Add(KpFirst);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(SetpointSecond);
+            Controls.Add(SetpointFirst);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(TimeX1);
             Controls.Add(TimeX10);
@@ -339,5 +601,29 @@ namespace modelling1
         private Button TimeX10;
         private Button TimeX1;
         private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox SetpointFirst;
+        private TextBox SetpointSecond;
+        private Label label4;
+        private Label label5;
+        private TextBox KpFirst;
+        private TextBox TiFirst;
+        private TextBox TdFirst;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private TextBox TdSecond;
+        private TextBox TiSecond;
+        private TextBox KpSecond;
+        private Button ChangeMode1;
+        private Button ChangeMode2;
+        private Button FirstLess;
+        private Button FirstMore;
+        private Button SecondLess;
+        private Button SecondMore;
     }
 }

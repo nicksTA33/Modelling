@@ -12,8 +12,20 @@ namespace modelling1.Blocks
         
 
         private ControlObject obj;
-        private PIDBlock reg1;
-        private PIDBlock reg2;
+        public PIDExtBlock reg1;
+        public PIDExtBlock reg2;
+
+        public bool Auto1
+        {
+            get { return reg1.AutoMode; }
+            set { reg1.AutoMode = value; }
+        }
+        public bool Auto2
+        {
+            get { return reg2.AutoMode; }
+            set { reg2.AutoMode = value; }
+        }
+
 
         public double Xin 
         {
@@ -61,7 +73,7 @@ namespace modelling1.Blocks
 
         }
 
-        public ControlSystem(PIDBlock reg1, PIDBlock reg2, ControlObject obj, double dt)
+        public ControlSystem(PIDExtBlock reg1, PIDExtBlock reg2, ControlObject obj, double dt)
         {
             this.obj = obj;
             this.dt = dt;
@@ -78,11 +90,31 @@ namespace modelling1.Blocks
             double error1 = Setpoint1 - Y1;
             double error2 = Setpoint2 - Y2;
 
-            var U1 = reg1.Calc(error1);
-            var U2 = reg2.Calc(error2);
+            double U1 = reg1.Calc(error1);
+            double U2 = reg2.Calc(error2);
 
-            Xin = U1;
-            X12 = U2;
+
+            if(Auto1 == true)
+            {
+                Xin = U1;
+            }
+            else
+            {
+                reg1.Umanual = Xin;
+            }
+
+            if (Auto2 == true)
+            {
+                X12 = U2;
+            }
+            else
+            {
+                reg2.Umanual = X12;
+            }
+
+
+            //Xin = U1;
+            //X12 = U2;
 
             return (Y1, Y2);
         }
