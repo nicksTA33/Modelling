@@ -50,6 +50,11 @@ namespace modelling1.Blocks
             this.dt = dt;
         }
 
+        public PIDExtBlock(double dt)
+        {
+            this.dt = dt;
+        }
+
         public override double Calc(double x)
         {
             

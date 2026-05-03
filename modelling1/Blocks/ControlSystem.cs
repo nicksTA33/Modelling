@@ -65,6 +65,13 @@ namespace modelling1.Blocks
         public double Setpoint1 { get; set; }
         public double Setpoint2 { get; set; }
 
+        public double error1 { get; set; }
+        public double error2 { get; set; }
+        public double out1 { get; set; }
+        public double out2 { get; set; }
+
+
+
 
         public ControlSystem(ControlObject obj, double dt)
         {
@@ -115,7 +122,9 @@ namespace modelling1.Blocks
 
             //Xin = U1;
             //X12 = U2;
-
+            out1 = Y1;
+            out2 = Y2;
+            Time += dt;
             return (Y1, Y2);
         }
 

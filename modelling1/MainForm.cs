@@ -1,4 +1,6 @@
 using modelling1.Blocks;
+using modelling2;
+
 
 namespace modelling1
 {
@@ -255,19 +257,19 @@ namespace modelling1
 
         private void FirstLess_Click(object sender, EventArgs e)
         {
-            
-                controlSystem.Xin -= 1;
-            
-            
-            
+
+            controlSystem.Xin -= 1;
+
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            
-                controlSystem.Xin += 1;
-            
+
+
+            controlSystem.Xin += 1;
+
         }
 
         private void SecondLess_Click(object sender, EventArgs e)
@@ -280,6 +282,69 @@ namespace modelling1
         private void SecondMore_Click(object sender, EventArgs e)
         {
             controlSystem.X12 += 1;
+        }
+
+        private void Optimize_Click(object sender, EventArgs e)
+        {
+            var obj = new ControlObject(0, 5, 0, 0, 2, 1);
+            Criterias.obj = obj;
+            Criterias.maxTime = 100;
+            Criterias.alpha = 1;
+            
+
+
+            double[] initial = { 2, 60, 4};
+            var I1 = Criterias.I2tCriteria(initial);
+            
+            ShowProcess(initial, obj, FirstTank);
+            double[] res = NelderMead.Optimize(Criterias.I2tCriteria, initial, 1e-06, 5000, 1, 0.5, 2);
+            ShowProcess(res, obj, SecondTank);
+            var I2 = Criterias.I2tCriteria(res);
+            MessageBox.Show($"K={res[0]}, Ti = {res[1]}, Td = {res[2]}");
+        }
+
+        public void ShowProcess(double[] vars, ControlObject obj, int series)
+        {
+            var MaxTime = Criterias.maxTime;
+            ControlSystem system = new ControlSystem(obj, dt);
+            system.reg1 = new PIDExtBlock(dt);
+            system.reg2 = new PIDExtBlock(dt);
+            system.reg1.K = vars[0];
+            system.reg1.Ti = vars[1];
+            system.reg1.Kd = vars[2];
+            system.Setpoint1 = 1;
+            var StepCount = (int)(MaxTime / dt);
+            FirstTank.Series[series].Points.Clear();
+
+            for (int i = 0; i < StepCount; i++)
+            {
+                FirstTank.Series[series].Points.AddXY(system.Time, system.out1);
+                system.Calc();
+
+                
+            }
+        }
+
+        public void ShowProcess(double[] vars, ControlObject obj, System.Windows.Forms.DataVisualization.Charting.Chart ch)
+        {
+            var MaxTime = Criterias.maxTime;
+            ControlSystem system = new ControlSystem(obj, dt);
+            system.reg1 = new PIDExtBlock(dt);
+            system.reg2 = new PIDExtBlock(dt);
+            system.reg1.K = vars[0];
+            system.reg1.Ti = vars[1];
+            system.reg1.Kd = vars[2];
+            system.Setpoint1 = 1;
+            var StepCount = (int)(MaxTime / dt);
+            ch.Series[0].Points.Clear();
+
+            for (int i = 0; i < StepCount; i++)
+            {
+                ch.Series[0].Points.AddXY(system.Time, system.out1);
+                system.Calc();
+
+
+            }
         }
     }
 }

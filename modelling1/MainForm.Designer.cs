@@ -83,6 +83,7 @@ namespace modelling1
             FirstMore = new Button();
             SecondLess = new Button();
             SecondMore = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)ObjectPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FirstTank).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SecondTank).BeginInit();
@@ -515,12 +516,23 @@ namespace modelling1
             SecondMore.UseVisualStyleBackColor = true;
             SecondMore.Click += SecondMore_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(86, 205);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 45;
+            button1.Text = "Optimize";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += Optimize_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Beige;
             ClientSize = new Size(1215, 576);
+            Controls.Add(button1);
             Controls.Add(SecondLess);
             Controls.Add(SecondMore);
             Controls.Add(FirstLess);
@@ -625,5 +637,6 @@ namespace modelling1
         private Button FirstMore;
         private Button SecondLess;
         private Button SecondMore;
+        private Button button1;
     }
 }
